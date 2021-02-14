@@ -1,13 +1,13 @@
 {
-    "compilerOptions": {
-        "target": "ES2019",        /* Build from ES2019 (includes ES2019 libraries) */
-        "module": "ES2015",        /* Build to ES2015 modules */
-        "outDir": "dist",          /* Build to dist */
-        "declaration": true,       /* Generates corresponding '.d.ts' files. */
-        "declarationDir": "dist",   /* Build '.d.ts' files to dist */
-        "moduleResolution": "node",
-        "strict": true
-    },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules", "dist"]
+  "compilerOptions": {
+    "target": "ES2019" /* Build from ES2019 (includes ES2019 libraries) */,
+    "module": "ES2015" /* Build to ES2015 modules */,
+    "outDir": "dist" /* Build to dist */,
+    "declaration": true /* Generates corresponding '.d.ts' files. */,
+    "declarationDir": "dist" /* Build '.d.ts' files to dist */,
+    "moduleResolution": "node",
+    "strict": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

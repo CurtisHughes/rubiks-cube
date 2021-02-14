@@ -7,13 +7,17 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "lint": "eslint src/** --fix"
+    "lint": "eslint src/** --fix",
+    "document": "typedoc src --mode file --readme none",
+    "format": "prettier --write \"**/*.{ts,json}\""
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "eslint": "^7.8.1",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^7.2.0",
+    "prettier": "2.2.1",
     "typedoc": "^0.19.1",
     "typescript": "^4.0.2"
   },
