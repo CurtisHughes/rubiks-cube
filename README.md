@@ -16,38 +16,9 @@ yarn add @curtishughes/rubiks-cube
 npm install @curtishughes/rubiks-cube
 ```
 
-## Methods (Singmaster notation)
-F (Front): the side currently facing the solver
-
-B (Back): the side opposite the front
-
-U (Up): the side above or on top of the front side
-
-D (Down): the side opposite the top, underneath the Cube
-
-L (Left): the side directly to the left of the front
-
-R (Right): the side directly to the right of the front
-
-ƒ (Front two layers): the side facing the solver and the corresponding middle layer
-
-b (Back two layers): the side opposite the front and the corresponding middle layer
-
-u (Up two layers): the top side and the corresponding middle layer
-
-d (Down two layers): the bottom layer and the corresponding middle layer
-
-l (Left two layers): the side to the left of the front and the corresponding middle layer
-
-r (Right two layers): the side to the right of the front and the corresponding middle layer
-
-x (rotate): rotate the entire Cube on R
-
-y (rotate): rotate the entire Cube on U
-
-z (rotate): rotate the entire Cube on F
-
 ## Usage
+The project's [api documentation](https://curtishughes.github.io/rubiks-cube/) is generated in the `docs` directory via [typedoc](https://typedoc.org/) and hosted with github pages.
+
 *Rubik's Cube* is not coupled with any specific framework. However, I have included some examples of how it can be used with a few of the popular frontend frameworks:
 
 ### React

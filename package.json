@@ -3,15 +3,25 @@
   "version": "1.0.0",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "license": "MIT",
+  "author": "Curtis Hughes",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "lint": "eslint src/** --fix",
+    "lint:write": "eslint src/** --fix",
+    "lint:check": "eslint src/**",
     "document": "typedoc src --mode file --readme none",
-    "format": "prettier --write \"**/*.{ts,json}\""
+    "format:write": "prettier --write \"**/*.{ts,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,json}\"",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn lint:check && yarn format:check"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "eslint": "^7.8.1",
@@ -28,10 +38,29 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.{ts,json}": "prettier --write"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CurtisHughes/rubiks-cube"
+  },
+  "keywords": [
+    "rubiks cube",
+    "rubiks",
+    "cube",
+    "3D",
+    "threejs",
+    "web",
+    "canvas",
+    "mobile",
+    "browser"
+  ]
 }
