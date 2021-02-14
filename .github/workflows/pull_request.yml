@@ -3,7 +3,7 @@ name: Pull Request
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   lint:
@@ -22,7 +22,7 @@ jobs:
             ${{ runner.OS }}-npm-${{ env.cache-name }}
             ${{ runner.OS }}-npm-
       - run: yarn
-      - run: yarn lint
+      - run: yarn lint:check
   format:
     runs-on: ubuntu-latest
     steps:
@@ -39,24 +39,7 @@ jobs:
             ${{ runner.OS }}-npm-${{ env.cache-name }}
             ${{ runner.OS }}-npm-
       - run: yarn
-      - run: yarn format
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-npm-${{ env.cache-name }}
-            ${{ runner.OS }}-npm-
-      - run: yarn
-      - run: yarn test
+      - run: yarn format:check
   build:
     runs-on: ubuntu-latest
     steps:
