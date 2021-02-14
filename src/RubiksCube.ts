@@ -6,6 +6,7 @@ export default class RubiksCube {
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene;
   private renderer: THREE.Renderer;
+  private locked: boolean = false;
 
   constructor(
       canvas: HTMLCanvasElement,
@@ -162,24 +163,28 @@ export default class RubiksCube {
       clockwise: boolean = false,
       duration: number,
   ) {
-    const group = cubes.reduce((acc, cube) =>
-      acc.add(cube), new THREE.Object3D());
+    if (!this.locked) {
+      this.locked = true;
+      const group = cubes.reduce((acc, cube) =>
+        acc.add(cube), new THREE.Object3D());
 
-    this.scene.add(group);
+      this.scene.add(group);
 
-    await this.rotateObject(group, axis, clockwise, duration);
+      await this.rotateObject(group, axis, clockwise, duration);
 
-    for (let i = group.children.length - 1; i >= 0; i--) {
-      const child = group.children[i];
-      this.scene.attach(child);
-      child.position.set(
-          Math.round(child.position.x),
-          Math.round(child.position.y),
-          Math.round(child.position.z),
-      );
+      for (let i = group.children.length - 1; i >= 0; i--) {
+        const child = group.children[i];
+        this.scene.attach(child);
+        child.position.set(
+            Math.round(child.position.x),
+            Math.round(child.position.y),
+            Math.round(child.position.z),
+        );
+      }
+
+      this.scene.remove(group);
+      this.locked = false;
     }
-
-    this.scene.remove(group);
   }
 
   private async rotateObject(
