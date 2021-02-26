@@ -1,3 +1,5 @@
+<img src="assets/example.gif" height="150px" />
+
 # Rubik's Cube
 A web based Rubik's Cube implementation. The goal of this package was to provide a minimal interface to the rendered Rubik's cube that would allow consumers to implement custom UI elements and build upon the provided functionality.
 
@@ -6,8 +8,6 @@ A web based Rubik's Cube implementation. The goal of this package was to provide
 * Singmaster notation methods
 * Configurable rotation speed
 * Responsive canvas
-
-![Example](assets/example.gif)
 
 ## Installation
 ```
