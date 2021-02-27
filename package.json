@@ -27,6 +27,7 @@
     "@commitlint/prompt-cli": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "eslint": "^7.8.1",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^7.2.0",
@@ -34,8 +35,12 @@
     "lint-staged": "^10.5.4",
     "prettier": "2.2.1",
     "semantic-release": "^17.3.9",
+    "ts-loader": "^8.0.17",
     "typedoc": "^0.19.1",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
   },
   "dependencies": {
     "three": "^0.124.0"
