@@ -1,1 +1,2 @@
-export { default as RubiksCube } from './RubiksCube';
+export { RubiksCube as default } from './RubiksCube';
+export { materials } from './materials';

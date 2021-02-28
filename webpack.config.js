@@ -2,7 +2,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+  },
   plugins: [
     new CleanWebpackPlugin(),
   ],
@@ -27,9 +29,10 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'index.js',
+    filename: (file) => file.chunk.name === 'index' ? 'index.js' : '[name]/index.js',
     path: path.resolve(__dirname, 'dist'),
     library: '@curtishughes/rubiks-cube',
     libraryTarget: 'umd',
   },
+  externals: ['three'],
 };

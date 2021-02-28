@@ -42,7 +42,7 @@
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "three": "^0.124.0"
   },
   "publishConfig": {
