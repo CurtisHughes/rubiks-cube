@@ -6,18 +6,43 @@ A web based Rubik's Cube implementation. The goal of this package was to provide
 ## Features
 * 3D rendered Rubik's Cube
 * Customizable material and textures
-* Exposed Singmaster notation methods
+* Exposed [Singmaster notation](https://en.wikipedia.org/wiki/Rubik%27s_Cube#Solutions) methods
 * Configurable rotation speed
 * Responsive canvas
 
 ## Installation
-```
+NOTE: [Three.js](https://threejs.org/) is a *required* peer dependency of this package. It has purposefully been excluded in order to reduce bundle size and allow the consumer to use their preferred version. 
+
+```bash
 yarn add @curtishughes/rubiks-cube three
 ```
 
-```
+```bash
 npm install @curtishughes/rubiks-cube three
 ```
+
+## Exports
+Default:
+- `RubiksCube(canvas: HTMLCanvasElement, materials: THREE.MeshBasicMaterial[], speed?: number, width?: string, height?: string)`
+  * `F (clockwise?: boolean, duration?: number)`: rotate the side currently facing the solver
+  * `B (clockwise?: boolean, duration?: number)`: rotate the side opposite the front
+  * `U (clockwise?: boolean, duration?: number)`: rotate the side above or on top of the front side
+  * `D (clockwise?: boolean, duration?: number)`: rotate the side opposite the top, underneath the Cube
+  * `L (clockwise?: boolean, duration?: number)`: rotate the side directly to the left of the front
+  * `R (clockwise?: boolean, duration?: number)`: rotate the side directly to the right of the front
+  * `f (clockwise?: boolean, duration?: number)`: rotate the side facing the solver and the corresponding middle layer
+  * `b (clockwise?: boolean, duration?: number)`: rotate the side opposite the front and the corresponding middle layer
+  * `u (clockwise?: boolean, duration?: number)`: rotate the top side and the corresponding middle layer
+  * `d (clockwise?: boolean, duration?: number)`: rotate the bottom layer and the corresponding middle layer
+  * `l (clockwise?: boolean, duration?: number)`: rotate the side to the left of the front and the corresponding middle layer
+  * `r (clockwise?: boolean, duration?: number)`: rotate the side to the right of the front and the corresponding middle layer
+  * `x (clockwise?: boolean, duration?: number)`: rotate the entire Cube on R
+  * `y (clockwise?: boolean, duration?: number)`: rotate the entire Cube on U
+  * `z (clockwise?: boolean, duration?: number)`: rotate the entire Cube on F
+
+Named:
+- `materials`
+  * `classic: THREE.MeshBasicMaterial[]`: the classic Rubik's Cube material (shown in above gif)
 
 ## Usage
 *Rubik's Cube* is not coupled with any specific framework. However, I have included some examples of how it can be used with a few of the popular frontend frameworks:
@@ -78,6 +103,7 @@ export default class Editor extends Vue {
 
 ### Customize material/textures
 ```ts
+import * as THREE from 'three';
 /* IMPORTANT: Load RubiksCube from the 'core' sub-module to avoid loading unnecessary material assets */
 import RubiksCube from '@curtishughes/rubiks-cube/core';
 
