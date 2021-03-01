@@ -8,12 +8,11 @@
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode production",
-    "lint:write": "eslint src/** --fix",
-    "lint:check": "eslint src/**",
+    "lint:write": "eslint ./src/**/*.ts --fix",
+    "lint:check": "eslint ./src/**/*.ts",
     "document": "typedoc src --mode file --readme none",
     "format:write": "prettier --write \"**/*.{ts,json}\"",
     "format:check": "prettier --check \"**/*.{ts,json}\"",
-    "prepublishOnly": "yarn lint:check && yarn format:check",
     "release": "semantic-release",
     "commit": "commit"
   },
