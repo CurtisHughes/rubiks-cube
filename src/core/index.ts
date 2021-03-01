@@ -1,0 +1,1 @@
+export { RubiksCube } from './RubiksCube';

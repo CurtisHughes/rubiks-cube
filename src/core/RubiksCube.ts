@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import CubeMesh from './CubeMesh';
-import { classic } from './materials/classic';
 import { Axis } from './types';
 
 export class RubiksCube {
@@ -11,7 +10,7 @@ export class RubiksCube {
 
   constructor(
     canvas: HTMLCanvasElement,
-    private material: THREE.MeshBasicMaterial[] = classic,
+    private materials: THREE.MeshBasicMaterial[],
     private speed: number = 1000,
     width: string = '100%',
     height: string = '100%',
@@ -209,7 +208,7 @@ export class RubiksCube {
         for (let x = -1; x < 2; x++) {
           const cube = new CubeMesh({
             position: new THREE.Vector3(x, y, z),
-            material: this.material,
+            materials: this.materials,
           });
           cubes.push(cube);
         }
