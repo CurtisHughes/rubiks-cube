@@ -13,7 +13,6 @@
     "document": "typedoc src --mode file --readme none",
     "format:write": "prettier --write \"**/*.{ts,json}\"",
     "format:check": "prettier --check \"**/*.{ts,json}\"",
-    "prepare": "yarn build",
     "prepublishOnly": "yarn lint:check && yarn format:check",
     "release": "semantic-release",
     "commit": "commit"

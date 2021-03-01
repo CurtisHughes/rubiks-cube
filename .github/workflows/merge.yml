@@ -21,6 +21,7 @@ jobs:
           ${{ runner.OS }}-npm-${{ env.cache-name }}
           ${{ runner.OS }}-npm-
     - run: yarn
+    - run: yarn build
     - run: yarn release
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
