@@ -15,6 +15,7 @@ module.exports = {
         { from: "./src/core/package.json", to: "./core/package.json" },
         { from: "./src/materials/package.json", to: "./materials/package.json" },
         { from: "./package.json", to: "./package.json" },
+        { from: "./README.md", to: "./README.md" },
       ],
     }),
   ],
