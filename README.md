@@ -1,32 +1,31 @@
-<img src="assets/example.gif" height="150px" />
+<img src="assets/classic.gif" height="150px" />
 
 # Rubik's Cube
 A web based Rubik's Cube implementation. The goal of this package was to provide a minimal interface to the rendered Rubik's cube that would allow consumers to implement custom UI elements and build upon the provided functionality.
 
 ## Features
 * 3D rendered Rubik's Cube
-* Singmaster notation methods
+* Customizable material and textures
+* Exposed Singmaster notation methods
 * Configurable rotation speed
 * Responsive canvas
 
 ## Installation
 ```
-yarn add @curtishughes/rubiks-cube
+yarn add @curtishughes/rubiks-cube three
 ```
 
 ```
-npm install @curtishughes/rubiks-cube
+npm install @curtishughes/rubiks-cube three
 ```
 
 ## Usage
-The project's [api documentation](https://curtishughes.github.io/rubiks-cube/) is generated in the `docs` directory via [typedoc](https://typedoc.org/) and hosted with github pages.
-
 *Rubik's Cube* is not coupled with any specific framework. However, I have included some examples of how it can be used with a few of the popular frontend frameworks:
 
 ### React
 ```tsx
 import React, { useRef, useEffect, useState } from 'react';
-import { RubiksCube } from '@curtishughes/rubiks-cube';
+import RubiksCube, { materials } from '@curtishughes/rubiks-cube';
 
 function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -34,7 +33,7 @@ function App() {
 
   useEffect(() => {
     if (canvasRef.current) {
-      setCube(new RubiksCube(canvasRef.current, 100));
+      setCube(new RubiksCube(canvasRef.current, materials.classic, 100));
     }
   }, []);
 
@@ -43,34 +42,7 @@ function App() {
       <canvas width="200px" height="200px" ref={canvasRef} />
       <button onClick={() => { if (cube) cube.F() }}>F</button>
       <button onClick={() => { if (cube) cube.F(false) }}>F'</button>
-      <button onClick={() => { if (cube) cube.B() }}>B</button>
-      <button onClick={() => { if (cube) cube.B(false) }}>B'</button>
-      <button onClick={() => { if (cube) cube.U() }}>U</button>
-      <button onClick={() => { if (cube) cube.U(false) }}>U'</button>
-      <button onClick={() => { if (cube) cube.D() }}>D</button>
-      <button onClick={() => { if (cube) cube.D(false) }}>D'</button>
-      <button onClick={() => { if (cube) cube.L() }}>L</button>
-      <button onClick={() => { if (cube) cube.L(false) }}>L'</button>
-      <button onClick={() => { if (cube) cube.R() }}>R</button>
-      <button onClick={() => { if (cube) cube.R(false) }}>R'</button>
-      <button onClick={() => { if (cube) cube.f() }}>f</button>
-      <button onClick={() => { if (cube) cube.f(false) }}>f'</button>
-      <button onClick={() => { if (cube) cube.b() }}>b</button>
-      <button onClick={() => { if (cube) cube.b(false) }}>b'</button>
-      <button onClick={() => { if (cube) cube.u() }}>u</button>
-      <button onClick={() => { if (cube) cube.u(false) }}>u'</button>
-      <button onClick={() => { if (cube) cube.d() }}>d</button>
-      <button onClick={() => { if (cube) cube.d(false) }}>d'</button>
-      <button onClick={() => { if (cube) cube.l() }}>l</button>
-      <button onClick={() => { if (cube) cube.l(false) }}>l'</button>
-      <button onClick={() => { if (cube) cube.r() }}>r</button>
-      <button onClick={() => { if (cube) cube.r(false) }}>r'</button>
-      <button onClick={() => { if (cube) cube.x() }}>x</button>
-      <button onClick={() => { if (cube) cube.x(false) }}>x'</button>
-      <button onClick={() => { if (cube) cube.y() }}>y</button>
-      <button onClick={() => { if (cube) cube.y(false) }}>y'</button>
-      <button onClick={() => { if (cube) cube.z() }}>z</button>
-      <button onClick={() => { if (cube) cube.z(false) }}>z'</button>
+      {/** ... **/}
     </>
   );
 }
@@ -85,42 +57,12 @@ export default App;
     <canvas ref="cube" />
     <button @click="() => cube.F()">F</button>
     <button @click="() => cube.F(false)">F'</button>
-    <button @click="() => cube.F()">F</button>
-    <button @click="() => cube.F(false)">F'</button>
-    <button @click="() => cube.B()">B</button>
-    <button @click="() => cube.B(false)">B'</button>
-    <button @click="() => cube.U()">U</button>
-    <button @click="() => cube.U(false)">U'</button>
-    <button @click="() => cube.D()">D</button>
-    <button @click="() => cube.D(false)">D'</button>
-    <button @click="() => cube.L()">L</button>
-    <button @click="() => cube.L(false)">L'</button>
-    <button @click="() => cube.R()">R</button>
-    <button @click="() => cube.R(false)">R'</button>
-    <button @click="() => cube.f()">f</button>
-    <button @click="() => cube.f(false)">f'</button>
-    <button @click="() => cube.b()">b</button>
-    <button @click="() => cube.b(false)">b'</button>
-    <button @click="() => cube.u()">u</button>
-    <button @click="() => cube.u(false)">u'</button>
-    <button @click="() => cube.d()">d</button>
-    <button @click="() => cube.d(false)">d'</button>
-    <button @click="() => cube.l()">l</button>
-    <button @click="() => cube.l(false)">l'</button>
-    <button @click="() => cube.r()">r</button>
-    <button @click="() => cube.r(false)">r'</button>
-    <button @click="() => cube.x()">x</button>
-    <button @click="() => cube.x(false)">x'</button>
-    <button @click="() => cube.y()">y</button>
-    <button @click="() => cube.y(false)">y'</button>
-    <button @click="() => cube.z()">z</button>
-    <button @click="() => cube.z(false)">z'</button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { RubiksCube } from '@curtishughes/rubiks-cube';
+import RubiksCube, { materials } from '@curtishughes/rubiks-cube';
 
 @Component
 export default class Editor extends Vue {
@@ -128,10 +70,25 @@ export default class Editor extends Vue {
 
   mounted() {
     const canvas = this.$refs.cube as HTMLCanvasElement;
-    this.cube = new RubiksCube(canvas, 100);
+    this.cube = new RubiksCube(canvas, materials.classic, 100);
   }
 }
 </script>
+```
+
+### Customize material/textures
+```ts
+/* IMPORTANT: Load RubiksCube from the 'core' sub-module to avoid loading unnecessary material assets */
+import RubiksCube from '@curtishughes/rubiks-cube/core';
+
+new RubiksCube(canvas,  [
+  new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('path/to/texture1') }),
+  new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('path/to/texture2') }),
+  new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('path/to/texture3') }),
+  new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('path/to/texture4') }),
+  new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('path/to/texture5') }),
+  new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('path/to/texture6') }),
+], 100);
 ```
 
 ## License

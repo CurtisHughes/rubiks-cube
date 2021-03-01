@@ -1,1 +1,1 @@
-export { RubiksCube } from './RubiksCube';
+export { RubiksCube as default } from './RubiksCube';

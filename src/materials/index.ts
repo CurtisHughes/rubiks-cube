@@ -1,5 +1,6 @@
 import { classic } from './classic';
 
-export const materials = {
+export { classic };
+export default {
   classic,
 };

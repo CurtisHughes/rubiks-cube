@@ -49,6 +49,12 @@ yarn link
 yarn link @curtishughes/rubiks-cube
 ```
 
+```ts
+// from UI project
+import RubiksCube, { materials } from '@curtishughes/rubiks-cube/dist';
+//...
+```
+
 You can also use the `yarn watch` command from the rubiks-cube project in order to build the project automatically on file change.
 
 ## Git Commit Guidelines
